@@ -1,7 +1,17 @@
-import React from "react";
+// import { getServerSession } from "next-auth/next";
+// import { authOptions } from "../api/auth/[...nextauth]/route";
+// import { redirect } from "next/navigation";
 
-const page = () => {
-  return <div>hi</div>;
-};
+// export default async function DashboardPage() {
+//   const session = await getServerSession(authOptions);
 
-export default page;
+//   if (!session) {
+//     redirect("/auth/signin");
+//   }
+
+//   return (
+//     <div>
+//       <h1>Welcome, {session.user?.name}</h1>
+//     </div>
+//   );
+// }

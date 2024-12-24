@@ -7,8 +7,12 @@ import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
+import { LampContainer } from "@/components/ui/lamp";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function FeaturesSectionDemo() {
+  const router = useRouter();
   const features = [
     {
       title: "Track issues effectively",
@@ -30,16 +34,19 @@ export default function FeaturesSectionDemo() {
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-          Packed with thousands of features
+          Track, Solve, and Showcase Your Coding Journey
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          From Image generation to video generation, Everything AI has APIs for
-          literally everything. It can even create this website copy for you.
+          Showcase Your Skills: Build a history of your coding challenges, with
+          the ability to revisit and edit your solutions at any time
         </p>
       </div>
       <button
         type="button"
+        onClick={() => {
+          signIn("google");
+        }}
         className=" mx-auto flex justify-center items-center rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out hover:bg-neutral-700 hover:shadow-dark-2 focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-dark-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
       >
         Get Started
