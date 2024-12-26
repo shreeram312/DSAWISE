@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
 import { LampContainer } from "@/components/ui/lamp";
-import { signIn } from "next-auth/react";
+import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function FeaturesSectionDemo() {
@@ -44,9 +44,6 @@ export default function FeaturesSectionDemo() {
       </div>
       <button
         type="button"
-        onClick={() => {
-          signIn("google");
-        }}
         className=" mx-auto flex justify-center items-center rounded bg-neutral-800 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out hover:bg-neutral-700 hover:shadow-dark-2 focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-dark-2 motion-reduce:transition-none dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
       >
         Get Started

@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+    "@nextui-org/system": "^2.4.5",
+    "@nextui-org/theme": "^2.4.4",
     "@tabler/icons-react": "^3.26.0",
     "clsx": "^2.1.1",
     "cobe": "^0.6.3",
+    "framer-motion": "^11.15.0",
     "motion": "^11.15.0",
     "next": "15.1.2",
     "next-auth": "^5.0.0-beta.25",
