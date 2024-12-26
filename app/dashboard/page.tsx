@@ -1,9 +1,14 @@
-"use client";
-import { signOut } from "next-auth/react";
+import Sidebar from "@/components/dashboard/Sidebar";
 import React from "react";
 
 const page = () => {
-  return <div>hello</div>;
+  return (
+    <div>
+      <div>
+        <Sidebar />
+      </div>
+    </div>
+  );
 };
 
 export default page;

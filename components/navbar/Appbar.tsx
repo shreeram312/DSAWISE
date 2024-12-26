@@ -39,7 +39,7 @@ const Appbar = async () => {
               <form
                 action={async () => {
                   "use server";
-                  await signOut();
+                  await signOut({ redirectTo: "/" });
                 }}
               >
                 <button
@@ -54,7 +54,7 @@ const Appbar = async () => {
             <form
               action={async () => {
                 "use server";
-                await signIn();
+                await signIn("google", { redirectTo: "/dashboard" });
               }}
             >
               <button
