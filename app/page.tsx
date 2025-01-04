@@ -2,13 +2,9 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import createGlobe from "cobe";
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { IconBrandYoutubeFilled } from "@tabler/icons-react";
 import Link from "next/link";
-import { LampContainer } from "@/components/ui/lamp";
-import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 export default function FeaturesSectionDemo() {
