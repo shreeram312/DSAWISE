@@ -75,7 +75,10 @@ export const CodeBlock = ({
         )}
         {!tabsExist && filename && (
           <div className="flex justify-between items-center py-2">
-            <div className="text-xs text-zinc-400">{filename}</div>
+            <div className="text-xl font-medium text-gray-200 hover:text-blue-400 transition-colors duration-300">
+              ⭐ {filename}
+            </div>
+
             <button
               onClick={copyToClipboard}
               className="flex items-center gap-1 text-xs text-zinc-400 hover:text-zinc-200 transition-colors font-sans "
