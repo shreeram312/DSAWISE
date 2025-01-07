@@ -15,9 +15,10 @@ datasource db {
 
 model User {
   id           String     @id @default(uuid())
+  SessionId    String     @unique
   email        String     @unique
   name         String
-  profileImage String?
+  profileImage String?   
   solutions    Solution[]
 }
 
@@ -28,36 +29,11 @@ model Solution {
   title         String
   description   String?
   language      String
-  brutesol      BruteSol[]
-  bettersol     BetterSol[]
-  optimalsol    Optimal[]
+  brutesol      String?
+  bettersol     String?
+  optimalsol    String?
+  approach      String?
   user          User        @relation(fields: [userId], references: [id])
   userId        String
 }
 
-model BruteSol {
-  id           String    @id @default(uuid())
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  approach     String?
-  solution     Solution @relation(fields: [solutionId], references: [id])
-  solutionId   String
-}
-
-model BetterSol {
-  id           String    @id @default(uuid())
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  approach     String?
-  solution     Solution @relation(fields: [solutionId], references: [id])
-  solutionId   String
-}
-
-model Optimal {
-  id           String    @id @default(uuid())
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
-  approach     String?
-  solution     Solution @relation(fields: [solutionId], references: [id])
-  solutionId   String
-}
