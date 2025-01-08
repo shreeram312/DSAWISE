@@ -8,7 +8,7 @@ const page = async () => {
   if (!session) return redirect("/");
   return (
     <div>
-      <TrackPage />
+      <TrackPage SessionId={session.user?.id as string} />
     </div>
   );
 };

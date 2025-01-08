@@ -1,6 +1,9 @@
 "use client";
+import SubmitAllCodes from "@/app/actions/submit";
 import { CodeBlock } from "@/components/ui/code-block";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 // Mock AI Insights API Function
 const fetchInsights = async (title: string) => {
@@ -9,7 +12,11 @@ const fetchInsights = async (title: string) => {
 
 const TABS = ["Brute", "Better", "Optimal"];
 
-const TrackPage: React.FC = () => {
+interface TrackPageProps {
+  SessionId: string;
+}
+
+const TrackPage: React.FC<TrackPageProps> = ({ SessionId }) => {
   const [activeTab, setActiveTab] = useState<string>("Brute");
   const [title, setTitle] = useState<string>("");
   const [insights, setInsights] = useState<string>("");
@@ -18,7 +25,8 @@ const TrackPage: React.FC = () => {
     Better: "",
     Optimal: "",
   });
-  const [language, setlanguage] = useState("java");
+  const [language, setLanguage] = useState("java");
+  const router = useRouter();
 
   const handleTabChange = (tab: string) => setActiveTab(tab);
 
@@ -46,25 +54,36 @@ const TrackPage: React.FC = () => {
     console.log("Submitted Code:", codeInputs);
   };
 
-  const handleBatchSave = () => {
-    console.log("Batch Save Triggered");
-    console.log("Title:", title);
-    console.log("Brute Solution:", codeInputs.Brute);
-    console.log("Better Solution:", codeInputs.Better);
-    console.log("Optimal Solution:", codeInputs.Optimal);
-    alert("All solutions saved locally! 🎯");
+  const handleBatchSave = async () => {
+    try {
+      const res = await SubmitAllCodes(
+        SessionId,
+        title,
+        language,
+        codeInputs.Brute,
+        codeInputs.Better,
+        codeInputs.Optimal
+      );
+      console.log(res);
+      toast.success("Solutions Submitted Successfully");
+      router.push("/dashboard");
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div className="max-w-7xl mx-auto mt-10 p-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* LEFT SIDE: Code Submission */}
-      <div className="bg-[#0D0D0D] text-white rounded-lg shadow-lg p-6">
+      <div className="bg-[#0D0D0D] text-white rounded-lg shadow-lg p-6 flex flex-col">
         {/* Title Input with Dropdown */}
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-3xl font-bold">Solution Submission</h1>
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+          <h1 className="text-2xl md:text-3xl font-bold">
+            Solution Submission
+          </h1>
           <select
             value={language}
-            onChange={(e) => setlanguage(e.target.value)}
+            onChange={(e) => setLanguage(e.target.value)}
             className="bg-[#1E1E1E] text-white border border-gray-700 rounded-md p-2 text-sm"
           >
             <option value="cpp">C++</option>
@@ -90,12 +109,12 @@ const TrackPage: React.FC = () => {
         />
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6 border-b border-gray-700 pb-2">
+        <div className="flex gap-4 mb-6 border-b border-gray-700 pb-2 overflow-x-auto">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`py-2 px-4 text-lg font-medium rounded-md ${
+              className={`py-2 px-4 text-sm md:text-lg font-medium rounded-md whitespace-nowrap ${
                 activeTab === tab
                   ? "bg-white text-black shadow"
                   : "bg-[#1E1E1E] text-gray-300 hover:text-white"
@@ -107,17 +126,17 @@ const TrackPage: React.FC = () => {
         </div>
 
         {/* Textarea for Code */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex-1 flex flex-col">
           <label className="block text-lg font-medium mb-2">
             {activeTab} Solution
           </label>
-          <div className="flex justify-end m-3">
+          <div className="flex justify-end mb-2">
             <button
               type="button"
               onClick={() =>
                 setCodeInputs({ Brute: "", Better: "", Optimal: "" })
               }
-              className="bg-red-500 hover:bg-red-600 -mt-10  text-white py-2 px-6 rounded-md"
+              className="bg-red-500 hover:bg-red-600 text-white py-2 px-6 rounded-md"
             >
               Clear All
             </button>
@@ -126,15 +145,15 @@ const TrackPage: React.FC = () => {
             name={activeTab}
             value={codeInputs[activeTab as keyof typeof codeInputs]}
             onChange={handleInputChange}
-            rows={8}
-            className="w-full p-4 rounded-md bg-[#1E1E1E] border border-gray-700 text-white font-mono"
+            rows={6}
+            className="w-full p-4 rounded-md bg-[#1E1E1E] border border-gray-700 text-white font-mono resize-none"
             placeholder={`Write your ${activeTab} solution here...`}
           />
         </form>
       </div>
 
       {/* RIGHT SIDE: Code Display */}
-      <div className="max-w-3xl mx-auto w-full">
+      <div className="w-full flex flex-col justify-between">
         <CodeBlock
           language={language}
           filename={title}
@@ -143,10 +162,10 @@ const TrackPage: React.FC = () => {
         />
 
         {/* Batch Save Button */}
-        <div className="mt-6 flex justify-end">
+        <div className="mt-6 flex justify-center md:justify-end">
           <button
             onClick={handleBatchSave}
-            className="bg-green-500 hover:bg-green-600 text-white py-2 px-3 rounded-lg text-lg font-semibold shadow-md"
+            className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 md:px-6 rounded-lg text-sm md:text-lg font-semibold shadow-md"
           >
             Save All Solutions 🚀
           </button>
