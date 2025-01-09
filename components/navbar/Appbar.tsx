@@ -8,9 +8,9 @@ const Appbar = async () => {
 
   return (
     <nav className="bg-black text-white shadow-md">
-      <div className="container mx-auto px-4 py-2 flex items-center justify-between">
+      <div className="container mx-auto px-4 py-4  flex items-center justify-between">
         <div className="text-xl font-bold">
-          <a href="/">MyApp</a>
+          <a href="/">DSA-Trac</a>
         </div>
         <div className="hidden md:flex space-x-6">
           <a href="#" className="hover:text-gray-400">

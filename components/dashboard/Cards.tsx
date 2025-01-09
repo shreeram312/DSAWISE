@@ -1,9 +1,10 @@
 "use client";
 import { HoverEffect } from "../ui/card-hover-effect";
+import { CodeBlock } from "../ui/code-block";
 
-export default function Cards() {
+export default function Cards({ res }: any) {
   return (
-    <div className="max-w-5xl overflow-hidden  h-screen mx-auto  px-8">
+    <div className="max-w-5xl overflow-hidden  h-screen  mx-14">
       <HoverEffect items={projects} />
     </div>
   );
