@@ -2,7 +2,27 @@
 import { HoverEffect } from "../ui/card-hover-effect";
 import { CodeBlock } from "../ui/code-block";
 
-export default function Cards({ res }: any) {
+interface AnswersList {
+  id: string;
+  SessionId: string;
+  email: string;
+  name: string;
+  profileImage: string;
+  solution: Solution[];
+}
+
+interface Solution {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+  description?: string;
+  language: string;
+  brutesol?: string;
+  bettersol?: string;
+  optimalsol?: string;
+}
+export default function Cards({ res }: { res: AnswersList }) {
+  console.log(res);
   return (
     <div className="max-w-5xl overflow-hidden  h-screen  mx-14">
       <HoverEffect items={projects} />
