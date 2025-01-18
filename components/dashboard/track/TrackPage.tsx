@@ -152,7 +152,6 @@ const TrackPage: React.FC<TrackPageProps> = ({ SessionId }) => {
         </form>
       </div>
 
-      {/* RIGHT SIDE: Code Display */}
       <div className="w-full flex flex-col justify-between">
         <CodeBlock
           language={language}

@@ -27,6 +27,12 @@ const Appbar = async () => {
         <div>
           {session && session?.user ? (
             <div className="flex items-center gap-4">
+              <button
+                type="submit"
+                className="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-md"
+              >
+                Sign Out
+              </button>
               {session.user.image && (
                 <Image
                   src={session.user.image}
@@ -41,14 +47,7 @@ const Appbar = async () => {
                   "use server";
                   await signOut({ redirectTo: "/" });
                 }}
-              >
-                <button
-                  type="submit"
-                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-md"
-                >
-                  Sign Out
-                </button>
-              </form>
+              ></form>
             </div>
           ) : (
             <form

@@ -17,14 +17,17 @@ const page = async () => {
       solutions: true,
     },
   });
+  console.log(res);
+
+  if (!res) {
+    return redirect("/");
+  }
   return (
     <div className="flex  ">
-      <div className="">
+      <div className="flex">
         <Sidebar />
       </div>
-      <div className="">
-        <Cards res={res} />
-      </div>
+      <div className="">{res && <Cards res={res} />}</div>
     </div>
   );
 };
