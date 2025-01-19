@@ -9,15 +9,18 @@ const page = async () => {
   const session = await auth();
   if (!session) return redirect("/");
 
-  const res = await prisma.user.findFirst({
+  const res = await prisma.user.findUnique({
     where: {
-      SessionId: session.user?.id,
+      email: session.user?.email ?? "",
     },
-    include: {
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      profileImage: true,
       solutions: true,
     },
   });
-  console.log(res);
 
   if (!res) {
     return redirect("/");

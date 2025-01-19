@@ -1,6 +1,7 @@
 "use client";
 import SubmitAllCodes from "@/app/actions/submit";
 import { CodeBlock } from "@/components/ui/code-block";
+import { useAppContext } from "@/lib";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -12,11 +13,7 @@ const fetchInsights = async (title: string) => {
 
 const TABS = ["Brute", "Better", "Optimal"];
 
-interface TrackPageProps {
-  SessionId: string;
-}
-
-const TrackPage: React.FC<TrackPageProps> = ({ SessionId }) => {
+const TrackPage = ({ userId }: { userId: string }) => {
   const [activeTab, setActiveTab] = useState<string>("Brute");
   const [title, setTitle] = useState<string>("");
   const [insights, setInsights] = useState<string>("");
@@ -27,7 +24,6 @@ const TrackPage: React.FC<TrackPageProps> = ({ SessionId }) => {
   });
   const [language, setLanguage] = useState("java");
   const router = useRouter();
-
   const handleTabChange = (tab: string) => setActiveTab(tab);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -50,21 +46,18 @@ const TrackPage: React.FC<TrackPageProps> = ({ SessionId }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted Title:", title);
-    console.log("Submitted Code:", codeInputs);
   };
 
   const handleBatchSave = async () => {
     try {
       const res = await SubmitAllCodes(
-        SessionId,
+        userId,
         title,
         language,
         codeInputs.Brute,
         codeInputs.Better,
         codeInputs.Optimal
       );
-      console.log(res);
       toast.success("Solutions Submitted Successfully");
       router.push("/dashboard");
     } catch (e) {

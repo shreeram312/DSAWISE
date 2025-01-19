@@ -1,6 +1,5 @@
 export interface AnswersList {
   id: string;
-  SessionId: string;
   email: string;
   name: string;
   profileImage?: string | null;

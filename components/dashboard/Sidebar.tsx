@@ -9,7 +9,7 @@ const Sidebar = () => {
         {/* Logo Section */}
         <div className="py-6 px-6 bg-black border-b border-gray-700">
           <a href="/" className="text-2xl font-bold text-yellow-500">
-            Recent Tracks
+            All History
           </a>
         </div>
 

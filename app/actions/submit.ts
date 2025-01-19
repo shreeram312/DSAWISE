@@ -3,7 +3,7 @@
 import prisma from "@/lib/prisma";
 
 export default async function SubmitAllCodes(
-  SessionId: string,
+  userId: string,
   title: string,
   language: string,
   brute?: string,
@@ -11,19 +11,9 @@ export default async function SubmitAllCodes(
   optimal?: string
 ) {
   try {
-    const existingUser = await prisma.user.findFirst({
-      where: {
-        SessionId: SessionId,
-      },
-    });
-
-    if (!existingUser) {
-      throw new Error("No User Found to add data");
-    }
-
     const SubmitedCode = await prisma.solution.create({
       data: {
-        userId: existingUser.id,
+        userId: userId,
         title: title,
         language: language,
         brutesol: brute,
