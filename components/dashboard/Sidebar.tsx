@@ -5,7 +5,7 @@ import { RiDashboardFill } from "react-icons/ri";
 const Sidebar = () => {
   return (
     <div>
-      <aside className="hidden md:block w-72 bg-black min-h-screen sticky top-0 shadow-lg">
+      <aside className="hidden md:block w-72 border-r border-gray-800 rounded-md  bg-black min-h-screen sticky top-0 shadow-lg">
         {/* Logo Section */}
         <div className="py-6 px-6 bg-black border-b border-gray-700">
           <a href="/" className="text-2xl font-bold text-yellow-500">

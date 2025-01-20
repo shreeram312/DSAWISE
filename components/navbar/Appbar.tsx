@@ -7,22 +7,24 @@ const Appbar = async () => {
   const session = await auth();
 
   return (
-    <nav className="bg-black text-white shadow-md">
-      <div className="container mx-auto px-2 py-2  flex items-center justify-between">
-        <div className="text-xl font-bold mx-1 flex">
+    <nav className="bg-black text-white shadow-md  border-b border-slate-700">
+      <div className="container -mx-3 sm:p-2  flex items-center justify-between">
+        <div className="flex items-center   ">
           <Image
             src="/e.png"
             height="100"
             width="100"
-            alt="a.png"
-            className="bg-transparent"
+            alt="DSA-Trac Logo"
+            className="rounded-md h-16 border-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-2 shadow-lg "
           />
-          <p className="font-semibold my-5">DSA-Trac</p>
+          <p className="font-semibold text-2xl  sm:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 -mx-4 ">
+            DStrAck
+          </p>
         </div>
 
-        <div>
+        <div className="hidden sm:block">
           {session && session?.user ? (
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4  ">
               {session.user.image && (
                 <Image
                   src={session.user.image}

@@ -18,7 +18,11 @@ const page = async () => {
       name: true,
       email: true,
       profileImage: true,
-      solutions: true,
+      solutions: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 
@@ -30,7 +34,15 @@ const page = async () => {
       <div className="flex">
         <Sidebar />
       </div>
-      <div className="">{res && <Cards res={res} />}</div>
+      <div className="">
+        <div className="flex justify-center items-center text-center my-6">
+          <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500">
+            Your Top 5 Recent DSA Solutions
+          </span>
+        </div>
+
+        {res && <Cards res={res} />}
+      </div>
     </div>
   );
 };

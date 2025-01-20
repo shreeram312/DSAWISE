@@ -132,7 +132,7 @@ export const SkeletonThree = () => {
           {/* TODO */}
           <IconBrandYoutubeFilled className="h-20 w-20 absolute z-10 inset-0 text-red-500 m-auto " />
           <Image
-            src="https://assets.aceternity.com/fireship.jpg"
+            src="/temp.jpeg"
             alt="header"
             width={800}
             height={800}
@@ -177,7 +177,7 @@ export const SkeletonTwo = () => {
             className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
           >
             <Image
-              src={image}
+              src="/temp.jpeg"
               alt="bali images"
               width="500"
               height="500"
@@ -199,7 +199,7 @@ export const SkeletonTwo = () => {
             className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
           >
             <Image
-              src={image}
+              src="/temp.jpeg"
               alt="bali images"
               width="500"
               height="500"
