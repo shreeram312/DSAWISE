@@ -24,16 +24,16 @@ const Page = () => {
   };`;
 
   return (
-    <div className="bg-black min-h-screen p-8">
-      <div className="max-w-screen-xl mx-4">
-        <h1 className="text-white text-4xl font-bold text-center mb-12">
+    <div className="bg-black min-h-screen p-4 sm:p-8">
+      <div className="max-w-screen-xl mx-auto">
+        <h1 className="text-white text-3xl sm:text-4xl font-bold text-center mb-12">
           Code Problem Showcase
         </h1>
 
         {/* Main content area */}
-        <div className="space-y-16">
+        <div className="space-y-12 sm:space-y-16">
           {/* Row 1 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
             <div className="flex-1 rounded-xl p-1 shadow-xl">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Code Snippet 1
@@ -62,7 +62,7 @@ const Page = () => {
           </div>
 
           {/* Row 2 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
             <div className="flex-1 rounded-xl p-1 shadow-xl">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Sum Function
@@ -91,7 +91,7 @@ const Page = () => {
           </div>
 
           {/* Row 3 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
             <div className="flex-1 rounded-xl p-1 shadow-xl">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Greet Function
