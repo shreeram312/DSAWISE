@@ -3,6 +3,7 @@ import { useAppContext } from "@/lib";
 import { AnswersList, Solution } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Cards({ res }: { res: AnswersList }) {
@@ -29,6 +30,7 @@ export default function Cards({ res }: { res: AnswersList }) {
   const handleNext = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
+  const router = useRouter();
 
   useEffect(() => {
     setUserData(res);
@@ -36,7 +38,12 @@ export default function Cards({ res }: { res: AnswersList }) {
   return (
     <div className="-my-5">
       <div className="max-w-5xl overflow-hidden mx-4 sm:grid sm:grid-cols-1 md:grid-cols-3 gap-6 h-auto my-10">
-        <div className="max-w-xs w-full h-fit border-2 border-transparent p-6 rounded-lg cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-xl bg-gradient-to-br from-[#121212] via-[#2b3a4b] to-[#1a202c] shadow-lg group relative my-4 sm:mx-2">
+        <div
+          onClick={() => {
+            router.push("/track");
+          }}
+          className="max-w-xs w-full h-fit border-2 border-transparent p-6 rounded-lg cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-xl bg-gradient-to-br from-[#121212] via-[#2b3a4b] to-[#1a202c] shadow-lg group relative my-4 sm:mx-2"
+        >
           <div className="flex flex-row items-center space-x-3 z-10">
             <Image
               height="100"
@@ -64,7 +71,13 @@ export default function Cards({ res }: { res: AnswersList }) {
 
         {currentSolutions.map((data: Solution, idx: number) => {
           return (
-            <div key={data.id} className="w-full h-auto group/card">
+            <div
+              onClick={() => {
+                router.push(`/${data.id}`);
+              }}
+              key={data.id}
+              className="w-full h-auto group/card"
+            >
               <div
                 className={cn(
                   "cursor-pointer overflow-hidden relative card h-56 rounded-md shadow-xl max-w-sm mx-auto backgroundImage flex flex-col justify-between p-2 my-4 sm:my-2 ",

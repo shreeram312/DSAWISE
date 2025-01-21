@@ -11,7 +11,7 @@ const Appbar = async () => {
       <div className="container -mx-3 sm:p-2  flex items-center justify-between">
         <div className="flex items-center   ">
           <Image
-            src="/e.png"
+            src="/main-logo.jpg"
             height="100"
             width="100"
             alt="DSA-Trac Logo"
