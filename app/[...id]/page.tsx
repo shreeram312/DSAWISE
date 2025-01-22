@@ -1,4 +1,6 @@
 import { CodeBlock } from "@/components/ui/code-block";
+import { Editor } from "@/lib/DynamicEditor";
+import { useBlockNoteContext } from "@blocknote/react";
 import React from "react";
 
 const Page = () => {
@@ -24,7 +26,7 @@ const Page = () => {
   };`;
 
   return (
-    <div className="bg-black min-h-screen p-4 sm:p-8">
+    <div className="bg-black min-h-screen w-full p-4 sm:p-8">
       <div className="max-w-screen-xl mx-auto">
         <h1 className="text-white text-3xl sm:text-4xl font-bold text-center mb-12">
           Code Problem Showcase
@@ -33,12 +35,12 @@ const Page = () => {
         {/* Main content area */}
         <div className="space-y-12 sm:space-y-16">
           {/* Row 1 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
-            <div className="flex-1 rounded-xl p-1 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+            <div className="flex-1 rounded-xl p-1 shadow-xl w-full">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Code Snippet 1
               </div>
-              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md">
+              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md overflow-x-auto w-full">
                 <CodeBlock
                   language="javascript"
                   filename="hello"
@@ -49,7 +51,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="flex-1 bg-gradient-to-r from-pink-600 via-red-600 to-yellow-600 rounded-xl p-6 shadow-xl">
+            <div className="flex-1 bg-gradient-to-r from-pink-600 via-red-600 to-yellow-600 rounded-xl p-6 shadow-xl w-full">
               <div className="text-white font-semibold text-xl mb-4">
                 Approach
               </div>
@@ -62,12 +64,12 @@ const Page = () => {
           </div>
 
           {/* Row 2 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
-            <div className="flex-1 rounded-xl p-1 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+            <div className="flex-1 rounded-xl p-1 shadow-xl w-full">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Sum Function
               </div>
-              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md">
+              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md overflow-x-auto w-full">
                 <CodeBlock
                   language="javascript"
                   filename="hello"
@@ -78,7 +80,7 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="flex-1 bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 rounded-xl p-6 shadow-xl">
+            <div className="flex-1 bg-gradient-to-r from-orange-500 via-red-500 to-yellow-500 rounded-xl p-6 shadow-xl w-full">
               <div className="text-white font-semibold text-xl mb-4">
                 Approach
               </div>
@@ -91,12 +93,12 @@ const Page = () => {
           </div>
 
           {/* Row 3 - Problem with Code Block and Approach on the right */}
-          <div className="flex flex-col sm:flex-row items-start justify-between gap-8">
-            <div className="flex-1 rounded-xl p-1 shadow-xl">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
+            <div className="flex-1 rounded-xl p-1 shadow-xl w-full">
               <div className="text-white font-mono text-xl mb-4">
                 Problem: Greet Function
               </div>
-              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md">
+              <div className="bg-gray-900 text-white p-2 rounded-md shadow-md overflow-x-auto w-full">
                 <CodeBlock
                   language="javascript"
                   filename="hello"
@@ -107,15 +109,8 @@ const Page = () => {
               </div>
             </div>
 
-            <div className="flex-1 bg-gradient-to-r from-gray-600 via-gray-700 to-gray-800 rounded-xl p-6 shadow-xl">
-              <div className="text-white font-semibold text-xl mb-4">
-                Approach
-              </div>
-              <p className="text-gray-300 text-lg">
-                The greet function demonstrates how to dynamically create a
-                string by taking a parameter and returning a personalized
-                message using string interpolation.
-              </p>
+            <div className="flex-1 rounded-xl p-6 shadow-xl bg-white w-full overflow-x-auto">
+              <Editor />
             </div>
           </div>
         </div>

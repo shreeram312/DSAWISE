@@ -20,6 +20,7 @@ const TrackPage = ({ userId }: { userId: string }) => {
     Better: "",
     Optimal: "",
   });
+
   const [language, setLanguage] = useState("java");
   const router = useRouter();
 
@@ -27,6 +28,7 @@ const TrackPage = ({ userId }: { userId: string }) => {
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
+
     setCodeInputs((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -57,9 +59,12 @@ const TrackPage = ({ userId }: { userId: string }) => {
         userId,
         title,
         language,
-        codeInputs.Brute,
-        codeInputs.Better,
-        codeInputs.Optimal
+        codeInputs.Brute.length > 2 ? true : false,
+        codeInputs.Better.length > 2 ? true : false,
+        codeInputs.Optimal.length > 2 ? true : false,
+        codeInputs.Brute.length > 2 ? codeInputs.Brute : "",
+        codeInputs.Better.length > 2 ? codeInputs.Better : "",
+        codeInputs.Optimal.length > 2 ? codeInputs.Optimal : ""
       );
       toast.success("Solutions Submitted Successfully");
       router.push("/dashboard");
@@ -69,12 +74,12 @@ const TrackPage = ({ userId }: { userId: string }) => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto mt-10 p-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div className="max-w-7xl mx-auto mt-10 p-4 md:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* LEFT SIDE: Code Submission */}
-      <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-lg shadow-xl p-6 flex flex-col">
+      <div className="bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-lg shadow-xl p-4 md:p-6 flex flex-col">
         {/* Title Input with Dropdown */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-          <h1 className="text-3xl font-extrabold text-yellow-400">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-yellow-400">
             Submit Your Solution
           </h1>
           <select
@@ -89,7 +94,7 @@ const TrackPage = ({ userId }: { userId: string }) => {
           </select>
         </div>
 
-        <p className="text-gray-400 mb-6">
+        <p className="text-gray-400 mb-4 text-sm md:text-base">
           Provide a descriptive title and submit your Brute, Better, and Optimal
           solutions.
         </p>
@@ -104,16 +109,16 @@ const TrackPage = ({ userId }: { userId: string }) => {
           required
           onChange={handleTitleChange}
           placeholder="Enter a descriptive title for your solution"
-          className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-6"
+          className="w-full p-3 rounded-md bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4"
         />
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-6 border-b border-gray-600 pb-2 overflow-x-auto">
+        <div className="flex gap-2 mb-4 border-b border-gray-600 pb-2 overflow-x-auto">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => handleTabChange(tab)}
-              className={`py-2 px-4 text-sm md:text-lg font-semibold rounded-md whitespace-nowrap shadow-md transition-all duration-200 ease-in-out ${
+              className={`py-2 px-4 text-sm md:text-base font-semibold rounded-md whitespace-nowrap shadow-md transition-all duration-200 ease-in-out ${
                 activeTab === tab
                   ? "bg-indigo-500 text-white shadow-lg"
                   : "bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white"

@@ -6,6 +6,9 @@ export default async function SubmitAllCodes(
   userId: string,
   title: string,
   language: string,
+  isGivenBrute: boolean,
+  isGivenBetter: boolean,
+  isGivenOptimal: boolean,
   brute?: string,
   better?: string,
   optimal?: string
@@ -19,6 +22,9 @@ export default async function SubmitAllCodes(
         brutesol: brute,
         bettersol: better,
         optimalsol: optimal,
+        isGivenBrute,
+        isGivenBetter,
+        isGivenOptimal,
       },
       select: {
         title: true,
@@ -26,6 +32,9 @@ export default async function SubmitAllCodes(
         brutesol: true,
         bettersol: true,
         optimalsol: true,
+        isGivenBrute: true,
+        isGivenBetter: true,
+        isGivenOptimal: true,
       },
     });
 

@@ -13,7 +13,12 @@ export interface Solution {
   brutesol?: string | null;
   bettersol?: string | null;
   optimalsol?: string | null;
-  approach?: string | null;
+  brutedescr?: string | null;
+  betterdescr?: string | null;
+  optimaldescr?: string | null;
+  isGivenBrute: boolean;
+  isGivenBetter: boolean;
+  isGivenOptimal: boolean;
   title: string;
   userId: string;
   createdAt: Date;
