@@ -5,24 +5,26 @@ import { BlockNoteView } from "@blocknote/mantine";
 import "@blocknote/mantine/style.css";
 import { useEffect, useMemo, useState } from "react";
 import { BlockNoteEditor } from "@blocknote/core";
+import { useParams } from "next/navigation";
 
 // Our <Editor> component we can reuse later
 export default function Editor() {
   // Creates a new editor instance.
   const [initialContent, setInitialContent] = useState("loading");
+  const { id } = useParams();
 
-  async function saveToStorage(jsonBlocks: any) {
-    localStorage.setItem("editorContent", JSON.stringify(jsonBlocks));
+  async function saveToStorage(id: any, jsonBlocks: any) {
+    localStorage.setItem(id, JSON.stringify(jsonBlocks));
   }
 
-  async function loadFromStorage() {
+  async function loadFromStorage(id: any) {
     // Gets the previously stored editor contents.
-    const storageString = localStorage.getItem("editorContent");
+    const storageString = localStorage.getItem(id);
     return storageString ? JSON.parse(storageString) : undefined;
   }
 
   useEffect(() => {
-    loadFromStorage().then((content) => {
+    loadFromStorage(id).then((content) => {
       setInitialContent(content);
     });
   }, []);
@@ -44,7 +46,7 @@ export default function Editor() {
     <BlockNoteView
       editor={editor}
       onChange={() => {
-        saveToStorage(editor.document);
+        saveToStorage(id, editor.document);
       }}
     />
   );
