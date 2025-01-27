@@ -10,8 +10,8 @@ type SolutionType = {
   type?: string;
 };
 
-const ServerPage = async ({ params }: { params: { id: string } }) => {
-  const { id } = params;
+const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
 
   const res = await CodeView(id);
   if (!res) {
