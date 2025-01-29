@@ -19,3 +19,55 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom scrollbar styling */
+/* Custom scrollbar styling */
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 2px; /* Reduced width for a sleeker look */
+  height: 6px; /* Smaller height for horizontal scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Light gray track for light mode */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #4a90e2; /* Sleek blue color for the thumb in light mode */
+  border-radius: 10px; /* Smooth rounded edges for the thumb */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #357ab7; /* Darker blue on hover for better contrast */
+}
+
+/* Body dark mode scrollbars */
+body.dark {
+  --scrollbar-thumb: #1abc9c; /* Mint green thumb color for dark mode */
+  --scrollbar-track: #2c3e50; /* Darker track color for dark mode */
+  --scrollbar-thumb-hover: #16a085; /* Darker mint green on hover */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, #f0f0f0); /* Track color based on mode */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb, #4a90e2); /* Thumb color based on mode */
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(
+    --scrollbar-thumb-hover,
+    #357ab7
+  ); /* Hover effect based on mode */
+}
+
+/* Optional: Custom color setup for the light theme */
+body:not(.dark) {
+  --scrollbar-thumb: #4a90e2; /* Blue thumb color for light mode */
+  --scrollbar-track: #f0f0f0; /* Light gray track for light mode */
+  --scrollbar-thumb-hover: #357ab7; /* Darker blue on hover in light mode */
+}

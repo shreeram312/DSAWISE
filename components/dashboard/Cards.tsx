@@ -5,11 +5,20 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RiDeleteBin5Fill } from "react-icons/ri";
+import {
+  Description,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
+import { DeleteSolution } from "@/app/actions/deletesol";
 
 export default function Cards({ res }: { res: AnswersList }) {
   const { userData, setUserData } = useAppContext();
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setUserData(res);
@@ -35,6 +44,12 @@ export default function Cards({ res }: { res: AnswersList }) {
   useEffect(() => {
     setUserData(res);
   }, []);
+
+  function handleDelete(id: string, data: any) {
+    const ans = DeleteSolution(id);
+    router.refresh();
+  }
+  console.log(currentSolutions);
   return (
     <div className="-my-5">
       <div className="max-w-5xl overflow-hidden mx-4 sm:grid sm:grid-cols-1 md:grid-cols-3 gap-6 h-auto my-10">
@@ -76,7 +91,7 @@ export default function Cards({ res }: { res: AnswersList }) {
                 router.push(`/${data.id}`);
               }}
               key={data.id}
-              className="w-full h-auto group/card"
+              className="w-full h-auto"
             >
               <div
                 className={cn(
@@ -85,21 +100,68 @@ export default function Cards({ res }: { res: AnswersList }) {
                 )}
               >
                 <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-                <div className="flex flex-row items-center space-x-4 z-10">
-                  <Image
-                    height="100"
-                    width="100"
-                    alt="Avatar"
-                    src={res.profileImage as string}
-                    className="h-10 w-10 rounded-full border-2 object-cover"
-                  />
-                  <div className="flex flex-col">
-                    <p className="font-normal text-base text-gray-50 relative z-10">
-                      {res.name}
-                    </p>
-                    <p className="text-sm text-gray-400">2 min read</p>
+                <div className="flex items-center justify-between space-x-4 z-10">
+                  <div className="flex items-center space-x-4">
+                    <Image
+                      height="100"
+                      width="100"
+                      alt="Avatar"
+                      src={res.profileImage as string}
+                      className="h-10 w-10 rounded-full border-2 object-cover"
+                    />
+
+                    <div className="flex flex-col">
+                      <p className="font-normal text-base text-gray-50 relative z-10">
+                        {res.name}
+                      </p>
+                      <p className="text-sm text-gray-400">2 min read</p>
+                    </div>
+                  </div>
+
+                  {/* Trashbin Icon placed at the end */}
+                  <div className="flex items-center">
+                    <RiDeleteBin5Fill
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevent routing when clicking on the trash icon
+                        setIsOpen(true); // Open the dialog
+                      }}
+                      className="cursor-pointer mb-4 text-2xl text-red-500"
+                    />
+                    <Dialog
+                      open={isOpen}
+                      onClose={() => setIsOpen(false)}
+                      className="relative z-50"
+                    >
+                      <div className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-50">
+                        <DialogPanel className="bg-black max-w-lg w-full p-8 rounded-xl shadow-lg space-y-6">
+                          <p className="text-gray-200">
+                            Are you sure you want to Delete this Solution..?
+                          </p>
+
+                          {/* Action Buttons */}
+                          <div className="flex justify-end gap-4">
+                            <button
+                              onClick={() => setIsOpen(false)}
+                              className="px-6 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors"
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              onClick={() => {
+                                handleDelete(data.id, data);
+                                setIsOpen(false);
+                              }}
+                              className="px-6 py-2 bg-red-500 text-white rounded-lg hover:bg-red-400 transition-colors"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </Dialog>
                   </div>
                 </div>
+
                 <div className="text content">
                   <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
                     {data.title}

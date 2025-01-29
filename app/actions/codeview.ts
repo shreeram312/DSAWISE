@@ -13,6 +13,9 @@ export async function CodeView(id: string) {
         optimalsol: true,
         title: true,
         language: true,
+        isGivenBrute: true,
+        isGivenBetter: true,
+        isGivenOptimal: true,
       },
     });
     console.log(ans);

@@ -8,6 +8,9 @@ type SolutionType = {
   language: string;
   title: string;
   type?: string;
+  isGivenBrute: boolean;
+  isGivenBetter: boolean;
+  isgivenOptimal: boolean;
 };
 
 const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
@@ -29,6 +32,9 @@ const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     language: res.language,
     title: res.title,
     type: "Brute sol",
+    isGivenBrute: res.isGivenBrute,
+    isGivenBetter: res.isGivenBetter,
+    isgivenOptimal: res.isGivenOptimal,
   };
 
   //@ts-ignore
