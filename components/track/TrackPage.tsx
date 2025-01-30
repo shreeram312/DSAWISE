@@ -67,7 +67,7 @@ const TrackPage = ({ userId }: { userId: string }) => {
         codeInputs.Optimal.length > 2 ? codeInputs.Optimal : ""
       );
       toast.success("Solutions Submitted Successfully");
-      router.push("/dashboard");
+      router.push(`/${res?.id}`);
     } catch (e) {
       console.log(e);
     }

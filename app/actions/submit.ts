@@ -27,6 +27,7 @@ export default async function SubmitAllCodes(
         isGivenOptimal,
       },
       select: {
+        id: true,
         title: true,
         language: true,
         brutesol: true,
@@ -38,7 +39,8 @@ export default async function SubmitAllCodes(
       },
     });
 
-    return SubmitAllCodes;
+    console.log("submit codie", SubmitedCode);
+    return SubmitedCode;
   } catch (e) {
     console.log(e);
   }

@@ -6,6 +6,8 @@ export async function DeleteSolution(id: string) {
     throw new Error("Id not provided");
   }
 
+  console.log("id is bro...........", id);
+
   const res = await prisma.solution.delete({
     where: {
       id: id,

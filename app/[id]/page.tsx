@@ -1,7 +1,10 @@
 import SolutionDisplay from "@/components/SolutionDisplay";
 import { CodeView } from "../actions/codeview";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import Appbar from "@/components/navbar/Appbar";
 
-type SolutionType = {
+export type SolutionType = {
   brutesol: string;
   bettersol: string;
   optimalsol: string;
@@ -10,10 +13,13 @@ type SolutionType = {
   type?: string;
   isGivenBrute: boolean;
   isGivenBetter: boolean;
-  isgivenOptimal: boolean;
+  isGivenOptimal: boolean;
+  id: string;
 };
 
 const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const session = await auth();
+  if (!session) return redirect("/");
   const { id } = await params;
 
   const res = await CodeView(id);
@@ -26,6 +32,7 @@ const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   }
 
   const solution: SolutionType = {
+    id: res.id,
     brutesol: res.brutesol ?? "",
     bettersol: res.bettersol ?? "",
     optimalsol: res.optimalsol ?? "",
@@ -34,11 +41,15 @@ const ServerPage = async ({ params }: { params: Promise<{ id: string }> }) => {
     type: "Brute sol",
     isGivenBrute: res.isGivenBrute,
     isGivenBetter: res.isGivenBetter,
-    isgivenOptimal: res.isGivenOptimal,
+    isGivenOptimal: res.isGivenOptimal,
   };
 
   //@ts-ignore
-  return <SolutionDisplay solution={solution} />;
+  return (
+    <div>
+      <SolutionDisplay solution={solution} />
+    </div>
+  );
 };
 
 export default ServerPage;

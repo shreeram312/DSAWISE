@@ -4,18 +4,7 @@ import { CodeBlock } from "@/components/ui/code-block";
 import { Editor } from "@/lib/DynamicEditor";
 import { FiCode, FiCpu, FiPocket, FiZap } from "react-icons/fi";
 import "../app/globals.css";
-
-type SolutionType = {
-  brutesol: string;
-  bettersol: string;
-  optimalsol: string;
-  language: string;
-  title: string;
-  type: string;
-  isGivenBrute: boolean;
-  isGivenBetter: boolean;
-  isgivenOptimal: boolean;
-};
+import { SolutionType } from "@/app/[id]/page";
 
 function SolutionDisplay({ solution }: { solution: SolutionType }) {
   return (
@@ -66,7 +55,7 @@ function SolutionDisplay({ solution }: { solution: SolutionType }) {
             />
           )}
 
-          {solution.isgivenOptimal && (
+          {solution.isGivenOptimal && (
             <SolutionCard
               title={solution.title}
               type="Optimal Solution"

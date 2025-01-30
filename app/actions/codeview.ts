@@ -8,6 +8,7 @@ export async function CodeView(id: string) {
         id: id,
       },
       select: {
+        id: true,
         brutesol: true,
         bettersol: true,
         optimalsol: true,
