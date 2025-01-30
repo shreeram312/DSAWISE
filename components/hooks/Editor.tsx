@@ -7,6 +7,8 @@ import { useEffect, useMemo, useState } from "react";
 import { BlockNoteEditor } from "@blocknote/core";
 import { useParams } from "next/navigation";
 
+import "../../app/globals.css";
+
 const openDB = () => {
   return new Promise<IDBDatabase>((resolve, reject) => {
     const request = indexedDB.open("BlockNoteDB", 1);

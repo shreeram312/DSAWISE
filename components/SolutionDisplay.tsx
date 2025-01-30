@@ -30,12 +30,17 @@ function SolutionDisplay({ solution }: { solution: SolutionType }) {
         {/* Editor Section */}
         <section className="space-y-4">
           <div className="flex items-center gap-2 text-blue-400">
-            <h2 className="text-xl  sm:flex  font-semibold sm:mx-44">
+            <h2 className="text-xl  sm:flex  font-semibold sm:mx-48">
               <FiCode className="text-xl mx-2 my-1" />
               Write Your Approach here🚀
             </h2>
           </div>
-          <div className="rounded-md sm:w-4/6 sm:mx-48 wm:h-full border border-gray-700 overflow-hidden">
+          <div
+            style={{
+              height: "100px",
+            }}
+            className="rounded-md sm:w-2/3 h-fit  sm:mx-48 sm:h-full border border-gray-700 overflow-hidden"
+          >
             <Editor />
           </div>
         </section>
