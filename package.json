@@ -14,7 +14,6 @@
     "@blocknote/react": "^0.23.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@monaco-editor/react": "^4.6.0",
     "@nextui-org/system": "^2.4.5",
     "@nextui-org/theme": "^2.4.4",
     "@prisma/client": "^6.1.0",
