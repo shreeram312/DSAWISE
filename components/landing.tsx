@@ -14,7 +14,7 @@ export default function FeaturesSectionDemo() {
     {
       title: "Track issues effectively",
       description:
-        "Track and manage your project issues with ease using our intuitive interface.",
+        "With our built-in editor, you can effortlessly write, save, and compare different approaches—from brute force to optimized solutions. Track your progress and revise smarter before your interviews!",
       skeleton: <SkeletonOne />,
       className:
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
@@ -31,12 +31,13 @@ export default function FeaturesSectionDemo() {
     <div className="relative z-20 py-10 lg:py-40 max-w-7xl mx-auto">
       <div className="px-8">
         <h4 className="text-3xl lg:text-5xl lg:leading-tight max-w-5xl mx-auto text-center tracking-tight font-medium text-black dark:text-white">
-          Track, Solve, and Showcase Your Coding Journey
+          Save. Review. Revise. Ace Your Interviews.
         </h4>
 
         <p className="text-sm lg:text-base  max-w-2xl  my-4 mx-auto text-neutral-500 text-center font-normal dark:text-neutral-300">
-          Showcase Your Skills: Build a history of your coding challenges, with
-          the ability to revisit and edit your solutions at any time
+          Now, it's easier than ever to save brute force, optimized, and better
+          approach solutions—all in one place. Keep track of your progress
+          effortlessly and revise smarter during interviews!
         </p>
       </div>
       <button

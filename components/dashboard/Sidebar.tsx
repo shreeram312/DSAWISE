@@ -9,6 +9,7 @@ import {
   FaCogs,
   FaTrophy,
 } from "react-icons/fa"; // Importing new icons
+import { CgProfile } from "react-icons/cg";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -16,11 +17,9 @@ const Sidebar = () => {
 
   const navItems = [
     { name: "Home", href: "/home", icon: <FaHome /> },
-    { name: "Users", href: "/users", icon: <FaUsers /> },
-    { name: "Roles", href: "/roles", icon: <FaKey /> },
-    { name: "Permissions", href: "/permissions", icon: <FaKey /> },
-    { name: "Categories", href: "/categories", icon: <FaTags /> },
+    { name: "Discussions", href: "/users", icon: <FaUsers /> },
     { name: "Leaderboard", href: "/leaderboard", icon: <FaTrophy /> },
+    { name: "Profile", href: "/profile", icon: <CgProfile /> },
     { name: "Settings", href: "/settings", icon: <FaCogs /> },
   ];
 
