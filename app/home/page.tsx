@@ -30,7 +30,7 @@ const page = async () => {
     return redirect("/");
   }
   return (
-    <div className="flex  ">
+    <div className="flex bg-black h-screen  ">
       <div className="flex">
         <Sidebar />
       </div>
