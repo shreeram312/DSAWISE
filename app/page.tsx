@@ -11,7 +11,6 @@ const page = async () => {
   }
   return (
     <div>
-      <Appbar />
       <FeaturesSectionDemo />
     </div>
   );
