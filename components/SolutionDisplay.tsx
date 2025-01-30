@@ -1,15 +1,24 @@
 "use client";
-
 import { CodeBlock } from "@/components/ui/code-block";
 import { Editor } from "@/lib/DynamicEditor";
 import { FiCode, FiCpu, FiPocket, FiZap } from "react-icons/fi";
 import "../app/globals.css";
 import { SolutionType } from "@/app/[id]/page";
+import { FiArrowLeft } from "react-icons/fi";
+import { useRouter } from "next/navigation";
 
 function SolutionDisplay({ solution }: { solution: SolutionType }) {
+  const router = useRouter();
   return (
     <div className="bg-black min-h-screen p-8">
       <div className="max-w-7xl mx-auto space-y-8">
+        <FiArrowLeft
+          onClick={() => {
+            router.push("/home");
+          }} // Navigate back
+          className="text-3xl cursor-pointer"
+        />
+
         {/* Header */}
         <div className="text-center space-y-2">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
@@ -21,12 +30,12 @@ function SolutionDisplay({ solution }: { solution: SolutionType }) {
         {/* Editor Section */}
         <section className="space-y-4">
           <div className="flex items-center gap-2 text-blue-400">
-            <FiCode className="text-xl" />
-            <h2 className="text-xl font-semibold">
+            <h2 className="text-xl  sm:flex  font-semibold sm:mx-44">
+              <FiCode className="text-xl mx-2 my-1" />
               Write Your Approach here🚀
             </h2>
           </div>
-          <div className="rounded-xl border border-gray-700 overflow-hidden">
+          <div className="rounded-md sm:w-4/6 sm:mx-48 wm:h-full border border-gray-700 overflow-hidden">
             <Editor />
           </div>
         </section>
