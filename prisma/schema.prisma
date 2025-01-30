@@ -27,9 +27,6 @@ model Solution {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
   title         String
-  brutedescr    String?
-  betterdescr   String?
-  optimaldescr  String?
   isGivenBrute  Boolean  @default(false)
   isGivenBetter Boolean  @default(false)
   isGivenOptimal Boolean @default(false)
@@ -37,7 +34,6 @@ model Solution {
   brutesol      String?
   bettersol     String?
   optimalsol    String?
-  approach      String?
   user          User        @relation(fields: [userId], references: [id])
   userId        String
 }

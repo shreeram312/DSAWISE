@@ -17,7 +17,7 @@ const Sidebar = () => {
 
   const navItems = [
     { name: "Home", href: "/home", icon: <FaHome /> },
-    { name: "Discussions", href: "/users", icon: <FaUsers /> },
+    { name: "Discussions", href: "/discussions", icon: <FaUsers /> },
     { name: "Leaderboard", href: "/leaderboard", icon: <FaTrophy /> },
     { name: "Profile", href: "/profile", icon: <CgProfile /> },
     { name: "Settings", href: "/settings", icon: <FaCogs /> },
