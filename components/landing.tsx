@@ -20,9 +20,9 @@ export default function FeaturesSectionDemo() {
         "col-span-1 lg:col-span-4 border-b lg:border-r dark:border-neutral-800",
     },
     {
-      title: "Capture pictures with AI",
+      title: "Customized Editor",
       description:
-        "Capture stunning photos effortlessly using our advanced AI technology.",
+        "Customized Editor similar to notion to write your approaches",
       skeleton: <SkeletonTwo />,
       className: "border-b col-span-1 lg:col-span-2 dark:border-neutral-800",
     },
