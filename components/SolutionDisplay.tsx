@@ -36,10 +36,10 @@ function SolutionDisplay({ solution }: { solution: SolutionType }) {
             </h2>
           </div>
           <div
-            style={{
-              height: "100px",
-            }}
-            className="rounded-md sm:w-2/3 h-fit  sm:mx-48 sm:h-full border border-gray-700 overflow-hidden"
+            // style={{
+            //   height: "200",
+            // }}
+            className="rounded-md sm:h-auto  sm:mx-48  border border-gray-700 overflow-hidden"
           >
             <Editor />
           </div>

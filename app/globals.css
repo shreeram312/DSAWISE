@@ -23,12 +23,10 @@ body {
 /* Custom scrollbar styling */
 /* Custom scrollbar styling */
 /* Custom scrollbar styling */
-.custom-scrollbar::-webkit-scrollbar {
+/* .custom-scrollbar::-webkit-scrollbar {
   width: 2px; /* Reduced width for a sleeker look */
-  height: 6px; /* Smaller height for horizontal scrollbar */
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
+/* } */
+*/ .custom-scrollbar::-webkit-scrollbar-track {
   background: #f0f0f0; /* Light gray track for light mode */
 }
 

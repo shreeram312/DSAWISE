@@ -24,7 +24,7 @@ export default function Cards({ res }: { res: AnswersList }) {
 
   useEffect(() => {
     setUserData(res);
-  }, [res, setUserData]);
+  }, [res]);
 
   const totalPages = Math.ceil(res.solutions.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
