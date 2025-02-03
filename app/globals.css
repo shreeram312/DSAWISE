@@ -26,7 +26,8 @@ body {
 /* .custom-scrollbar::-webkit-scrollbar {
   width: 2px; /* Reduced width for a sleeker look */
 /* } */
-*/ .custom-scrollbar::-webkit-scrollbar-track {
+
+.custom-scrollbar::-webkit-scrollbar-track {
   background: #f0f0f0; /* Light gray track for light mode */
 }
 
